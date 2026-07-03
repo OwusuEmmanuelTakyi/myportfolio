@@ -17,10 +17,28 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const title = "Owusu Emmanuel Takyi — Full-Stack Developer & AI Builder";
+const description =
+  "Owusu Emmanuel Takyi is a Computer Science student, full-stack developer, and technology entrepreneur based in Accra, Ghana. I build digital products for Africa and beyond.";
+
 export const metadata: Metadata = {
-  title: "Owusu Emmanuel Takyi — Full-Stack Developer & AI Builder",
-  description:
-    "Owusu Emmanuel Takyi is a Computer Science student, full-stack developer, and technology entrepreneur based in Accra, Ghana. I build digital products for Africa and beyond.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: "Owusu Emmanuel Takyi",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({

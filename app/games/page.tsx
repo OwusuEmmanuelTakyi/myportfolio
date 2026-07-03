@@ -2,14 +2,32 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Keyboard, Grid3x3, HelpCircle, Zap, Bug } from "lucide-react";
+import {
+  ArrowLeft,
+  Keyboard,
+  Grid3x3,
+  HelpCircle,
+  Zap,
+  Bug,
+  Hash,
+  Hand,
+} from "lucide-react";
 import { TypingGame } from "@/components/games/TypingGame";
 import { MemoryGame } from "@/components/games/MemoryGame";
 import { CodeQuiz } from "@/components/games/CodeQuiz";
 import { ReactionGame } from "@/components/games/ReactionGame";
 import { BugSquashGame } from "@/components/games/BugSquashGame";
+import { TicTacToeGame } from "@/components/games/TicTacToeGame";
+import { RockPaperScissorsGame } from "@/components/games/RockPaperScissorsGame";
 
-type GameId = "typing" | "memory" | "quiz" | "reaction" | "bugsquash";
+type GameId =
+  | "typing"
+  | "memory"
+  | "quiz"
+  | "reaction"
+  | "bugsquash"
+  | "tictactoe"
+  | "rps";
 
 const games: { id: GameId; title: string; description: string; icon: typeof Keyboard }[] = [
   {
@@ -41,6 +59,18 @@ const games: { id: GameId; title: string; description: string; icon: typeof Keyb
     title: "Debug Dash",
     description: "Squash bugs before they escape. 30 seconds on the clock.",
     icon: Bug,
+  },
+  {
+    id: "tictactoe",
+    title: "Tic-Tac-Toe",
+    description: "Two-player classic — great for two people sharing one device.",
+    icon: Hash,
+  },
+  {
+    id: "rps",
+    title: "Rock Paper Scissors",
+    description: "Two-player, pass-the-device style with a secret reveal.",
+    icon: Hand,
   },
 ];
 
@@ -79,6 +109,8 @@ export default function GamesPage() {
             {active === "quiz" && <CodeQuiz />}
             {active === "reaction" && <ReactionGame />}
             {active === "bugsquash" && <BugSquashGame />}
+            {active === "tictactoe" && <TicTacToeGame />}
+            {active === "rps" && <RockPaperScissorsGame />}
           </motion.div>
         ) : (
           <motion.div
