@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { ShareButtons } from "@/components/ui/ShareButtons";
+import { PostStats } from "@/components/ui/PostStats";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -66,6 +68,11 @@ export default async function BlogPostPage({
         <span>{post.readingTime}</span>
       </div>
 
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <PostStats slug={post.slug} />
+        <ShareButtons title={post.title} />
+      </div>
+
       <ImagePlaceholder
         label={post.coverImage}
         className="mt-10 h-64 w-full rounded-xl sm:h-80"
@@ -75,7 +82,7 @@ export default async function BlogPostPage({
         <MDXRemote source={post.content} />
       </div>
 
-      <div className="mt-16 border-t border-brand-border pt-8">
+      <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-brand-border pt-8">
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm font-medium text-brand-gold hover:underline"
@@ -83,6 +90,7 @@ export default async function BlogPostPage({
           <ArrowLeft size={16} />
           Back to Blog
         </Link>
+        <ShareButtons title={post.title} />
       </div>
     </article>
   );

@@ -27,6 +27,19 @@ This project deploys to Vercel with zero config beyond environment variables:
 2. Add `ANTHROPIC_API_KEY` (and `RESEND_API_KEY` if used) under **Project Settings → Environment Variables**.
 3. Deploy — `vercel.json` sets a longer `maxDuration` on `/api/chat` so streaming AI responses aren't cut off.
 
+### Blog view counts & likes (Vercel KV)
+
+Blog post view counts and likes (`/api/blog/[slug]`) are backed by Vercel KV:
+
+1. In your Vercel project, go to **Storage → Create Database → KV**.
+2. Connect the KV store to this project — Vercel automatically adds the
+   `KV_REST_API_URL` / `KV_REST_API_TOKEN` (etc.) environment variables.
+3. Redeploy. No schema or migration needed — each post's views/likes are
+   stored under `post:<slug>:views` / `post:<slug>:likes`.
+
+Without a connected KV store (e.g. local dev), the stats API fails closed
+and the UI just shows 0 rather than erroring.
+
 ## Project Structure
 
 - `app/` — Next.js App Router pages and API routes
