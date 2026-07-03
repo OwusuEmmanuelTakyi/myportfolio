@@ -1,0 +1,45 @@
+import {
+  Calendar,
+  Vote,
+  Bot,
+  Store,
+  Zap,
+  Car,
+  UserCircle,
+  Sprout,
+  Building2,
+  Scale,
+  Camera,
+  type LucideIcon,
+} from "lucide-react";
+
+export const industries: { label: string; icon: LucideIcon }[] = [
+  { label: "Legal technology & AI policy", icon: Scale },
+  { label: "Event technology platforms", icon: Calendar },
+  { label: "Electronic voting systems", icon: Vote },
+  { label: "AI-powered digital solutions", icon: Bot },
+  { label: "Marketplace platforms", icon: Store },
+  { label: "Smart utility management systems", icon: Zap },
+  { label: "Campus mobility solutions", icon: Car },
+  { label: "Personal branding platforms", icon: UserCircle },
+  { label: "Agricultural technology research", icon: Sprout },
+  { label: "Church and organizational digital platforms", icon: Building2 },
+  { label: "Photography & graphic design", icon: Camera },
+];
+
+export const interests = [
+  "Artificial Intelligence",
+  "Legal Technology",
+  "AI Policy & Advocacy",
+  "Software Engineering",
+  "Product Management",
+  "Startup Development",
+  "Civic Technology",
+  "Digital Governance",
+  "Human Computer Interaction",
+  "Business Strategy",
+  "Agricultural Technology",
+  "Cloud Computing",
+  "User Experience Design",
+  "Data-Driven Decision Making",
+];

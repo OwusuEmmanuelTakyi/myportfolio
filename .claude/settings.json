@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"console.log\\(require\\('./node_modules/next-mdx-remote/package.json'\\).version\\)\")",
+      "Bash(node -e ' *)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@anthropic-ai/sdk/package.json'\\).version\\)\")",
+      "Bash(npm run *)",
+      "Bash(mkdir -p verify-screenshots)",
+      "Bash(node scripts/verify-pages.js)"
+    ]
+  }
+}
