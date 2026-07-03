@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Portfolio site for Owusu Emmanuel Takyi — built with Next.js 16, Tailwind CSS v4, Framer Motion, and the Anthropic API.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.local` (not committed) and set:
 
-## Learn More
+| Variable | Required | Purpose |
+| --- | --- | --- |
+| `ANTHROPIC_API_KEY` | Yes | Powers the `/api/chat` AI assistant (streaming Claude responses) |
+| `RESEND_API_KEY` | No | Only needed if the contact form is wired to Resend instead of `mailto:` |
+| `NEXT_PUBLIC_SITE_URL` | No | Used for absolute URLs/metadata; defaults to `http://localhost:3000` |
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying on Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project deploys to Vercel with zero config beyond environment variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Import the GitHub repo at [vercel.com/new](https://vercel.com/new).
+2. Add `ANTHROPIC_API_KEY` (and `RESEND_API_KEY` if used) under **Project Settings → Environment Variables**.
+3. Deploy — `vercel.json` sets a longer `maxDuration` on `/api/chat` so streaming AI responses aren't cut off.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/` — Next.js App Router pages and API routes
+- `components/` — UI components grouped by domain (home, projects, games, chat, layout, ui)
+- `lib/` — data files (projects, blog, CV, chat system prompt) — edit these to update site content
+- `content/blog/` — MDX blog posts
+- `public/images/`, `public/cv/` — static assets; see the `README.md` in each folder for what to add
